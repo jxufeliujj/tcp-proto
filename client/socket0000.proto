@@ -1,0 +1,33 @@
+package client;
+
+// 请求登陆
+message SCS100000 {
+	optional string userId = 1;//用户id
+}
+
+message SSC100000 {
+	optional uint32 type = 1; // 0成功，1用户已登入，2失败
+}
+
+message TestData{
+	optional sint64 time = 1;//当前时间戳
+	optional string userId = 2;//用户id
+	optional bool state = 3;//状态
+	optional sint32 data = 4;//数据
+}
+
+//测试数据
+message SCS100001{
+	optional sint64 num = 1;//消息序号
+	optional TestData msg = 2;//消息内容
+}
+
+//测试数据返回
+message SSC100001{
+	optional sint64 num = 1;//消息序号
+}
+
+//心跳包
+message SCS100002{
+	optional string beat = 1 [default="beatHeart"];//心跳
+}
